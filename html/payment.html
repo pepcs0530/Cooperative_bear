@@ -1,0 +1,94 @@
+<!DOCTYPE>
+<html >
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<head>
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/payment.css">
+  <script src="../js/bootstrap.min.js"></script>
+
+</head>
+<body ng-app="cb" ng-controller="checkStockController">
+	<div class="container">
+    <div class="row">
+        <div class="form-group">
+          <div class="col-md-2" align="right">
+            <label>รหัสใบสั่งซื้อ : </label>
+          </div>
+          <div class="col-md-6">
+            <input type="text" class="form-control" id="usr">
+          </div>
+          <div class="col-md-4">
+            <a href=#/ class="btn btn-primary col-md-4" type="submit">ค้นหา</a>
+          </div>
+        </div>
+    </div>
+    <br>
+		<!--input type="text" ng-model="searchThis" placeholder="ใส่คำที่คุณต้องการค้นหา"-->
+    <div class="row">
+      <div class="table-responsive">
+    		<table class="table"border="1" width="100%">
+    			<tr class="active" align="center">
+    				<td>รหัสสินค้า</td>
+    				<td>ชื่อสินค้า</td>
+    				<td>ราคา</td>
+    				<td>จำนวน</td>
+            <td>รวมราคา</td>
+    			</tr>
+    			<tr ng-repeat="showdata in listInventory | filter : searchThis ">
+    				<td>{{showdata.Cb_Inv_ID}}</td>
+    				<td>{{showdata.Cb_Inv_Name}}</td>
+    				<td>{{showdata.Cb_Inv_Prices}}</td>
+    				<td>{{showdata.Cb_Inv_Balance}}</td>
+            <td>{{showdata.Cb_Inv_Balance}}</td>
+    			</tr>
+    		</table>
+      </div>
+    </div>
+		<br>
+
+    <div class="row">
+        <div class="form-group">
+          <div class="col-md-1" align="right">
+            <label>ยอดเงิน</label>
+          </div>
+          <div class="col-md-3">
+            <input type="text" class="form-control" id="usr">
+          </div>
+          <div class="col-md-1">
+              <label>ธนาคาร</label>
+          </div>
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle col-md-7" type="button" data-toggle="dropdown">กรุณาเลือกธนาคารที่ชำระเงิน
+              <span class="caret"></span>
+            </button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">HTML</a></li>
+                    <li><a href="#">CSS</a></li>
+                    <li><a href="#">JavaScript</a></li>
+                </ul>
+          </div>
+          <br>
+        </div>
+    </div>
+    <br>
+    <div class="row" align="right">
+        <div class="col-md-1">
+          <label>วันที่โอน</label>
+        </div>
+    </div>
+    <br>
+    <div>
+      <div class="col-md-4">
+      </div>
+      <div class="col-md-4">
+      </div>
+      <div class="col-md-4">
+          <button id="btn_save" class="btn btn-primary col-md-4" type="submit">บันทึก</button>
+      </div>
+    </div>
+
+		<textarea rows="10" cols="50">{{InventoryXML}}</textarea>
+	</div>
+</body>
