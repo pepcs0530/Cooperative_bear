@@ -4,13 +4,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	
 <head>
-<body>
-	<div>	
+<body ng-app="cb" ng-controller="checkStockController">
+	<div>
+		<input type="text" ng-model="searchThis" placeholder="ใส่คำที่คุณต้องการค้นหา">	
 		<table border="1" width="100%">
 			<tr>
 				<td>รหัสสินค้า</td>
 				<td>ชื่อสินค้า</td>
+				<td>ราคา</td>
+				<td>จำนวนคงเหลือ</td>
+			</tr>
+			<tr ng-repeat="showdata in listInventory | filter : searchThis ">
+				<td>{{showdata.Cb_Inv_ID}}</td>
+				<td>{{showdata.Cb_Inv_Name}}</td>
+				<td>{{showdata.Cb_Inv_Prices}}</td>
+				<td>{{showdata.Cb_Inv_Balance}}</td>
 			</tr>
 		</table>
+		<br>
+		<textarea rows="10" cols="50">{{InventoryXML}}</textarea>
 	</div>
 </body>
