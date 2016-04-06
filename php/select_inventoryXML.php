@@ -36,5 +36,4 @@
 	header('Content-type: text/xml');
 	$xml->flush();
 	
-	print "XML";
 ?>
